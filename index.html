@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Backgrounds · 36 Effects</title>
+    <meta name="description" content="36 animated WebGL and Canvas 2D background effects extracted from getdesign.md/backgrounds, shown live with customizable colors and speed." />
+    <script>
+      // Set the theme before first paint to avoid a flash of the wrong theme.
+      // "auto" (default) follows the system preference; "light"/"dark" are forced.
+      (function () {
+        try {
+          var stored = localStorage.getItem("fx-theme-mode");
+          var dark =
+            stored === "dark" ||
+            (stored !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+          var theme = dark ? "dark" : "light";
+          var root = document.documentElement;
+          root.dataset.theme = theme;
+          root.style.colorScheme = theme;
+          root.style.backgroundColor = dark ? "#161618" : "#f5f4f0";
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
